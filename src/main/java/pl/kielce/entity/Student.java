@@ -8,11 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table (name="student")
 public class Student extends Person{
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_generator")
-    @SequenceGenerator(name="student_generator", sequenceName = "student_seq", allocationSize=1)
-    @Column (name="id")
-    private int id;
+    
     @Column(name="grade_average")
     private float gradeAverage;
     @Column(name="employed")
@@ -28,14 +24,6 @@ public class Student extends Person{
         this.gradeAverage = gradeAverage;
         this.employed = employed;
         this.listOfClasses = listOfClasses;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public float getGradeAverage() {
@@ -65,7 +53,7 @@ public class Student extends Person{
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
+                //"id=" + id +
                 ", firstName='" + this.getFirstName() + '\'' +
                 ", lastName='" + this.getLastName() + '\'' +
                 ", gender='" + this.getGender() + '\'' +

@@ -23,6 +23,13 @@
       	<mapping class="pl.kielce.entity.Vehicle"/> 
       	<mapping class="pl.kielce.entity.Car"/> 
       	<mapping class="pl.kielce.entity.Motorcycle"/>  
+      	<mapping class="pl.kielce.entity.Address"/>  
+      	<mapping class="pl.kielce.entity.Student"/>  
+      	<mapping class="pl.kielce.entity.Professor"/>  
+      	<mapping class="pl.kielce.entity.Fuel"/>  
+      	<mapping class="pl.kielce.entity.Gender"/>  
+      	<mapping class="pl.kielce.entity.Person"/>  
+      	<mapping class="pl.kielce.entity.Course"/>  
 
     </session-factory>
 </hibernate-configuration>

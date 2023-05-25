@@ -75,7 +75,7 @@ public class Car extends Vehicle{
                 '}';
     }
 
-    public void generateData()
+    public void generateCarData()
     {
         Random generator = new Random();
         Faker faker = new Faker(new Locale("pl-PL"));
