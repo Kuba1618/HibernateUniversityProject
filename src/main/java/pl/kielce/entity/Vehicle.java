@@ -5,10 +5,8 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Vehicle {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int vehicleId;
+public class Vehicle extends VehicleId{
+  
     @Column(name="single_track")
     private boolean singleTrack;
     @Column(name="license_plate")
@@ -22,14 +20,7 @@ public class Vehicle {
         this.licensePlate = licensePlate;
     }
 
-    public int getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(int vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
+  
     public boolean isSingleTrack() {
         return singleTrack;
     }
@@ -49,7 +40,7 @@ public class Vehicle {
     @Override
     public String toString() {
         return "Vehicle{" +
-                "vehicleId=" + vehicleId +
+                "vehicleId=" + this.getVehicleId() +
                 ", singleTrack='" + singleTrack + '\'' +
                 ", licensePlate='" + licensePlate + '\'' +
                 '}';
