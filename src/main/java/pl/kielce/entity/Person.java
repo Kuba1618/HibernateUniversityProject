@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 import com.github.javafaker.Faker;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Person {
     @Id
     @GeneratedValue

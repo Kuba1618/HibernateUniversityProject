@@ -5,25 +5,26 @@ import java.util.Random;
 import javax.persistence.*;
 
 
-@Entity
-@Table (name="student")
+@Entity(name="Student")
 public class Student extends Person{
     
     @Column(name="grade_average")
     private float gradeAverage;
     @Column(name="employed")
     private boolean employed;
-    @Embedded
-    private List<Class> listOfClasses;
-
+    @OneToOne
+    private Course course;
+    @OneToOne
+    private Motorcycle motorcycle;
+    
     public Student(){
 
     }
-
-    public Student(float gradeAverage, boolean employed, List<Class> listOfClasses) {
+    
+    public Student(float gradeAverage, boolean employed, Course course) {
         this.gradeAverage = gradeAverage;
         this.employed = employed;
-        this.listOfClasses = listOfClasses;
+        this.course = course;
     }
 
     public float getGradeAverage() {
@@ -42,41 +43,33 @@ public class Student extends Person{
         this.employed = employed;
     }
 
-    public List<Class> getListOfClasses() {
-        return listOfClasses;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setListOfClasses(List<Class> listOfClasses) {
-        this.listOfClasses = listOfClasses;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                //"id=" + id +
-                ", firstName='" + this.getFirstName() + '\'' +
-                ", lastName='" + this.getLastName() + '\'' +
-                ", gender='" + this.getGender() + '\'' +
-                ", addressInfo='" + this.getAddressInfo().toString() + '\'' +
-                ", email='" + this.getEmail() + '\'' +
-                ", phone='" + this.getPhone() + '\'' +
-                ", gradeAverage='" + gradeAverage + '\'' +
-                ", employed='" + employed + '\'' +
-               // ", listOfClasses='" + listOfClasses.toString() + '\'' +
-                '}';
-    }
+    public Motorcycle getMotorcycle() {
+		return motorcycle;
+	}
 
-    public void generateStudentData()
+	public void setMotorcycle(Motorcycle motorcycle) {
+		this.motorcycle = motorcycle;
+	}
+
+	public void generateStudentData()
     {
         Random r = new Random();
         //Faker faker = new Faker(new Locale("pl-PL"));
-
+        
         generatePersonData();
         float randomAverage = Math.round((r.nextFloat() * (5.0F - 2.5F) + 2.5F) * 10.0F) / 10.0F;
         setGradeAverage(randomAverage);
         boolean randomEmployed = r.nextInt()%2 == 0;
         setEmployed(randomEmployed);
-        setListOfClasses(null);
+       
     }
 
 }

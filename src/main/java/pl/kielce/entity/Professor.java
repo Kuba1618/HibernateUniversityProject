@@ -4,35 +4,40 @@ import java.util.List;
 import java.util.Random;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-@Entity(name="professor")
+@Entity(name="Professor")
 public class Professor extends Person{
  
     @Column(name="insurance_number")
     private long insuranceNumber;
-    @Embedded
+    @OneToOne
     private Car car;
-
-//    @OneToMany(mappedBy = "professor")
-//    private List<Course> listOfCourse;
+    @OneToOne
+    private Course course;
 
     public Professor() {
+    
+    }
+    
+    public Professor(long insuranceNumber, Car car) {
+    	super();
+    	this.insuranceNumber = insuranceNumber;
+    	this.car = car;
     }
 
-    public Professor(int insuranceNumber, Car car, List<Course> listOfCourse) {
+	public Professor(int insuranceNumber, Car car, Course course) {
         this.insuranceNumber = insuranceNumber;
         this.car = car;
-//        this.listOfCourse = listOfCourse;
+        this.course = course;
     }
 
-    public Professor(String firstName, String lastName, Gender gender, Address addressInfo, String email, int phone, int insuranceNumber, Car car, List<Course> listOfCourse) {
+    public Professor(String firstName, String lastName, Gender gender, Address addressInfo, String email, int phone, int insuranceNumber, Car car, Course course) {
         super(firstName, lastName, gender, addressInfo, email, phone);
         this.insuranceNumber = insuranceNumber;
         this.car = car;
-//        this.listOfCourse = listOfCourse;
+        this.course = course;
     }
 
     public long getInsuranceNumber() {
@@ -51,19 +56,19 @@ public class Professor extends Person{
         this.car = car;
     }
 
-//    public List<Course> getListOfCourse() {
-//        return listOfCourse;
-//    }
-//
-//    public void setListOfCourse(List<Course> listOfCourse) {
-//        this.listOfCourse = listOfCourse;
-//    }
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
     @Override
     public String toString(){
         return "Proffesor{" +
                 ", insuranceNumber='" + insuranceNumber + '\'' +
-                ", car='" + car + '\'' + //vehicle.toString() or vehicle.getVehicleId()
+                ", car='" + car.toString() + '\'' + //vehicle.toString() or vehicle.getVehicleId()
                 ", listOfCourse='" + " " + '\'' +
                 '}';
     }
@@ -75,21 +80,5 @@ public class Professor extends Person{
         long range = 99999999999l - 10000000000l;
         long insuaranceNumber = (long) (Math.random() * (range) + 10000000000l);
         setInsuranceNumber(insuaranceNumber);
-//        boolean haveVehicle = generator.nextInt()%2 == 0;
-//
-//        //Does professor has a vehicle ? Let's random an answer
-//        if(!haveVehicle){
-//            setVehicle(null);
-//        }else{
-//            Vehicle vehicle1 = new Vehicle();
-//            vehicle1.generateVehicleData();
-//            setVehicle(vehicle1);
-//        }
-
-        Car car = new Car();
-	    car.generateCarData();
-	    setVehicle(car);
-        
-//        setListOfCourse(null);
     }
 }

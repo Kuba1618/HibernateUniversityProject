@@ -15,19 +15,21 @@ public class Car extends Vehicle{
     @Column(name="mile_age")
     private float mileAge;
     @Enumerated(EnumType.STRING)
-    private Fuel fuel;
+    private TypeOfCarBody bodyType;
     @Column(name="engine_size")
     private float engineSize;
+    @OneToOne
+    private Professor professor; 
 
     public Car(){
 
     }
 
-    public Car(boolean singleTrack, String licensePlate,String color, float mileAge, Fuel fuel, float engineSize) {
+    public Car(boolean singleTrack, String licensePlate,String color, float mileAge, TypeOfCarBody bodyType, float engineSize) {
         super(singleTrack,licensePlate);
         this.color = color;
         this.mileAge = mileAge;
-        this.fuel = fuel;
+        this.bodyType = bodyType;
         this.engineSize = engineSize;
     }
 
@@ -47,12 +49,12 @@ public class Car extends Vehicle{
         this.mileAge = mileAge;
     }
 
-    public Fuel getFuel() {
-        return fuel;
+    public TypeOfCarBody getBodyType() {
+        return bodyType;
     }
 
-    public void setFuel(Fuel fuel) {
-        this.fuel = fuel;
+    public void setBodyType(TypeOfCarBody bodyType) {
+        this.bodyType = bodyType;
     }
 
     public float getEngineSize() {
@@ -62,15 +64,23 @@ public class Car extends Vehicle{
     public void setEngineSize(float engineSize) {
         this.engineSize = engineSize;
     }
+    
+    public Professor getProfessor() {
+		return professor;
+	}
 
-    @Override
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	@Override
     public String toString() {
         return "Car{" +
                 ", licensePlate='" + this.getLicensePlate() + '\'' +
                 ", singleTrack='" + this.isSingleTrack() + '\'' +
                 ", color='" + color + '\'' +
                 ", mileAge='" + mileAge + '\'' +
-                ", fuel='" + fuel + '\'' +
+                ", fuel='" + bodyType + '\'' +
                 ", engineSize='" + engineSize + '\'' +
                 '}';
     }
@@ -84,10 +94,11 @@ public class Car extends Vehicle{
         setColor(faker.color().name());
         float mileAge = 35.000F + generator.nextFloat() * (450.000F - 35.000F);
         setMileAge(mileAge);
-        setFuel(Fuel.randomFuel());
+        setBodyType(TypeOfCarBody.randomBodyType());
 
         float randomEngineSize = Math.round((0.8F + generator.nextFloat() * (2.4F - 0.8F)) * 10.0F) / 10.0F;
 
         setEngineSize(randomEngineSize);
     }
+
 }

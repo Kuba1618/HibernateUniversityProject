@@ -26,7 +26,7 @@
       	<mapping class="pl.kielce.entity.Address"/>  
       	<mapping class="pl.kielce.entity.Student"/>  
       	<mapping class="pl.kielce.entity.Professor"/>  
-      	<mapping class="pl.kielce.entity.Fuel"/>  
+      	<mapping class="pl.kielce.entity.TypeOfCarBody"/>  
       	<mapping class="pl.kielce.entity.Gender"/>  
       	<mapping class="pl.kielce.entity.Person"/>  
       	<mapping class="pl.kielce.entity.Course"/>  

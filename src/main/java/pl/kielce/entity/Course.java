@@ -16,30 +16,25 @@ public class Course {
     private String title;
     @Column(name="room")
     private String room;
-    @ManyToOne
+    @OneToOne
     private Professor professor;
-    @OneToMany
-    private List<Student> listOfStudents;
-
+    @OneToOne
+    private Student student;
+    
     public Course() {
+    
     }
+   
+    public Course(int courseId, String title, String room, Professor professor, Student student) {
+		super();
+		this.courseId = courseId;
+		this.title = title;
+		this.room = room;
+		this.professor = professor;
+		this.student = student;
+	}
 
-    public Course(String title, String room, Professor professor,List<Student> listOfStudents) {
-        this.title = title;
-        this.room = room;
-        this.professor = professor;
-        this.listOfStudents = listOfStudents;
-    }
-
-    public List<Student> getListOfStudents() {
-        return listOfStudents;
-    }
-
-    public void setListOfStudents(List<Student> listOfStudents) {
-        this.listOfStudents = listOfStudents;
-    }
-
-    public int getCourseId() {
+	public int getCourseId() {
         return courseId;
     }
 
@@ -71,26 +66,21 @@ public class Course {
         this.professor = professor;
     }
 
+    public Student getStudent() {
+		return student;
+	}
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseId=" + courseId +
-                ", title='" + title + '\'' +
-                ", room='" + room + '\'' +
-                ", professor='" + professor.toString() + '\'' +
-                ", listOfStudents='" + listOfStudents.toString()+ '\'' +
-                '}';
-    }
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 
-    public void generateData()
+	public void generateCourseData()
     {
         Random generator = new Random();
         Faker faker = new Faker(new Locale("pl-PL"));
         float roomNumber = Math.round((1.0F + generator.nextFloat() * (5.4F - 1.0F)) * 100.0F) / 100.0F;
         setTitle(faker.educator().course());
-        setRoom("D"+ "." + roomNumber);
-        //setProfessor();
-        //setListOfStudents();
+        String buildings = "ABCD";
+        setRoom(roomNumber + " "+ buildings.charAt(generator.nextInt(buildings.length())));
     }
 }

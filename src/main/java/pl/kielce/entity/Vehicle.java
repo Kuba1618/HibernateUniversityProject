@@ -11,6 +11,8 @@ public class Vehicle extends VehicleId{
     private boolean singleTrack;
     @Column(name="license_plate")
     private String licensePlate;
+    @OneToOne
+    private Professor professor;
 
     public Vehicle() {
     }

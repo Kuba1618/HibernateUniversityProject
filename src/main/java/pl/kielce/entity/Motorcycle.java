@@ -37,17 +37,7 @@ public class Motorcycle extends Vehicle{
         this.mileAge = mileAge;
     }
 
-    @Override
-    public String toString() {
-        return "Motorcycle{" +
-                ", licensePlate='" + this.getLicensePlate() + '\'' +
-                ", singleTrack='" + this.isSingleTrack() + '\'' +
-                ", engineSize='" + engineSize + '\'' +
-                ", mileAge='" + mileAge + '\'' +
-                '}';
-    }
-
-    public void generateData()
+    public void generateMotorcycleData()
     {
         Random generator = new Random();
         //Faker faker = new Faker(new Locale("pl-PL"));
