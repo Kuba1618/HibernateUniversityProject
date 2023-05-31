@@ -20,7 +20,7 @@ public class HibernateTest {
 		
 		session.beginTransaction();
 
-		for(int i = 0 ;i < 100;i++) {
+		for(int i = 0 ;i < 5;i++) {
 			
 			Car car = new Car();
 		    car.generateCarData();

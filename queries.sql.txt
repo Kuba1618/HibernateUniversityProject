@@ -1,0 +1,19 @@
+-- select * from person where (employed is null) or (grade_average is null) or (motorcycle_vehicleId is null) or (car_vehicleId is null);
+
+SELECT 
+SUM(CASE WHEN employed IS NULL THEN 1 ELSE 0 END) As employed_null,
+SUM(CASE WHEN grade_average IS NULL THEN 1 ELSE 0 END) As grade_average_null,
+SUM(CASE WHEN insurance_number IS NULL THEN 1 ELSE 0 END) As insuarance_number_null,
+SUM(CASE WHEN motorcycle_vehicleId IS NULL THEN 1 ELSE 0 END) As motorcycle_vehicleId_null,
+SUM(CASE WHEN car_vehicleId IS NULL THEN 1 ELSE 0 END) As car_vehicleId_null
+FROM person;
+
+-- SELECT
+-- 	SUM(CASE WHEN personId > 0 THEN 1 ELSE 0 END) As numOfPErson22
+-- FROM person;
+
+-- SET FOREIGN_KEY_CHECKS = 0; -- to disable them
+-- delete from person where (personId > 0);
+-- SET FOREIGN_KEY_CHECKS = 1;
+
+-- select * from person;
