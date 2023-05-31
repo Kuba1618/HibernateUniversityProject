@@ -15,7 +15,7 @@ public class Car extends Vehicle{
     @Column(name="mile_age")
     private float mileAge;
     @Enumerated(EnumType.STRING)
-    private TypeOfCarBody bodyType;
+    private TypeOfCarBody typeOfCarBody;
     @Column(name="engine_size")
     private float engineSize;
     @OneToOne
@@ -29,7 +29,7 @@ public class Car extends Vehicle{
         super(singleTrack,licensePlate);
         this.color = color;
         this.mileAge = mileAge;
-        this.bodyType = bodyType;
+        this.typeOfCarBody = bodyType;
         this.engineSize = engineSize;
     }
 
@@ -50,11 +50,11 @@ public class Car extends Vehicle{
     }
 
     public TypeOfCarBody getBodyType() {
-        return bodyType;
+        return typeOfCarBody;
     }
 
     public void setBodyType(TypeOfCarBody bodyType) {
-        this.bodyType = bodyType;
+        this.typeOfCarBody = bodyType;
     }
 
     public float getEngineSize() {
@@ -80,7 +80,7 @@ public class Car extends Vehicle{
                 ", singleTrack='" + this.isSingleTrack() + '\'' +
                 ", color='" + color + '\'' +
                 ", mileAge='" + mileAge + '\'' +
-                ", fuel='" + bodyType + '\'' +
+                ", fuel='" + typeOfCarBody + '\'' +
                 ", engineSize='" + engineSize + '\'' +
                 '}';
     }

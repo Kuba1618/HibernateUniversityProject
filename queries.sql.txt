@@ -17,3 +17,7 @@ FROM person;
 -- SET FOREIGN_KEY_CHECKS = 1;
 
 -- select * from person;
+
+
+-- numberOfNullsInColumn = (numberOfRows / DTYPE)   --> DTYPE == (Student,Professor)
+-- numberOfNullsInDatabase = numberOfNullsInColumn * numberOfColumns
