@@ -4,7 +4,7 @@ import java.util.Random;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Vehicle extends VehicleId{
   
     @Column(name="single_track")

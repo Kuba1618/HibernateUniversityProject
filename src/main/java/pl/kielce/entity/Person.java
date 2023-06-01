@@ -7,7 +7,7 @@ import javax.persistence.*;
 import com.github.javafaker.Faker;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Person {
     @Id
     @GeneratedValue
