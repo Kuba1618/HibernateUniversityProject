@@ -20,7 +20,7 @@ public class HibernateTest {
 		
 		session.beginTransaction();
 
-		for(int i = 0 ;i < 500;i++) {
+		for(int i = 0; i < 50 ; i++) {
 			
 			Car car = new Car();
 		    car.generateCarData();
@@ -49,7 +49,7 @@ public class HibernateTest {
 //			}
 //			//---------- Add list of students to created earlier course
 //			course.setListOfStudents(listOfStudents);
-			
+			course.setStudent(student);
 			
 			session.save(car); //before saving the professor
 			session.save(prof);

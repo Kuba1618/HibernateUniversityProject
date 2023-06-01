@@ -4,15 +4,13 @@ import java.util.Random;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Vehicle extends VehicleId{
   
     @Column(name="single_track")
     private boolean singleTrack;
     @Column(name="license_plate")
     private String licensePlate;
-    @OneToOne
-    private Professor professor;
 
     public Vehicle() {
     }
